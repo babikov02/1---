@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgentSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="INN" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ContactPerson" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DealSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAgent" Type="int" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdIts" Type="int" Nullable="false" />
+          <Property Name="IdProgramProduct" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProgramProductSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Descriptoin" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAgent" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DealSet_AgentSet">
+          <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
+          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSet">
+              <PropertyRef Name="IdAgent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSet_ClientSet">
+          <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
+          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSet_ItsSet">
+          <End Role="ItsSet" Type="Self.ItsSet" Multiplicity="1" />
+          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSet">
+              <PropertyRef Name="IdIts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSet_ProgramProductSet">
+          <End Role="ProgramProductSet" Type="Self.ProgramProductSet" Multiplicity="1" />
+          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramProductSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSet">
+              <PropertyRef Name="IdProgramProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersSet_AgentSet">
+          <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
+          <End Role="UsersSet" Type="Self.UsersSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersSet">
+              <PropertyRef Name="IdAgent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="AgentSet" EntityType="Self.AgentSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientSet" EntityType="Self.ClientSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealSet" EntityType="Self.DealSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItsSet" EntityType="Self.ItsSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramProductSet" EntityType="Self.ProgramProductSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersSet" EntityType="Self.UsersSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DealSet_AgentSet" Association="Self.FK_DealSet_AgentSet">
+            <End Role="AgentSet" EntitySet="AgentSet" />
+            <End Role="DealSet" EntitySet="DealSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSet_ClientSet" Association="Self.FK_DealSet_ClientSet">
+            <End Role="ClientSet" EntitySet="ClientSet" />
+            <End Role="DealSet" EntitySet="DealSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSet_ItsSet" Association="Self.FK_DealSet_ItsSet">
+            <End Role="ItsSet" EntitySet="ItsSet" />
+            <End Role="DealSet" EntitySet="DealSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSet_ProgramProductSet" Association="Self.FK_DealSet_ProgramProductSet">
+            <End Role="ProgramProductSet" EntitySet="ProgramProductSet" />
+            <End Role="DealSet" EntitySet="DealSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersSet_AgentSet" Association="Self.FK_UsersSet_AgentSet">
+            <End Role="AgentSet" EntitySet="AgentSet" />
+            <End Role="UsersSet" EntitySet="UsersSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgentSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DealSet" Relationship="Self.FK_DealSet_AgentSet" FromRole="AgentSet" ToRole="DealSet" />
+          <NavigationProperty Name="UsersSet" Relationship="Self.FK_UsersSet_AgentSet" FromRole="AgentSet" ToRole="UsersSet" />
+        </EntityType>
+        <EntityType Name="ClientSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="INN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DealSet" Relationship="Self.FK_DealSet_ClientSet" FromRole="ClientSet" ToRole="DealSet" />
+        </EntityType>
+        <EntityType Name="DealSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAgent" Type="Int32" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdIts" Type="Int32" Nullable="false" />
+          <Property Name="IdProgramProduct" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgentSet" Relationship="Self.FK_DealSet_AgentSet" FromRole="DealSet" ToRole="AgentSet" />
+          <NavigationProperty Name="ClientSet" Relationship="Self.FK_DealSet_ClientSet" FromRole="DealSet" ToRole="ClientSet" />
+          <NavigationProperty Name="ItsSet" Relationship="Self.FK_DealSet_ItsSet" FromRole="DealSet" ToRole="ItsSet" />
+          <NavigationProperty Name="ProgramProductSet" Relationship="Self.FK_DealSet_ProgramProductSet" FromRole="DealSet" ToRole="ProgramProductSet" />
+        </EntityType>
+        <EntityType Name="ItsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DealSet" Relationship="Self.FK_DealSet_ItsSet" FromRole="ItsSet" ToRole="DealSet" />
+        </EntityType>
+        <EntityType Name="ProgramProductSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descriptoin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DealSet" Relationship="Self.FK_DealSet_ProgramProductSet" FromRole="ProgramProductSet" ToRole="DealSet" />
+        </EntityType>
+        <EntityType Name="UsersSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAgent" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AgentSet" Relationship="Self.FK_UsersSet_AgentSet" FromRole="UsersSet" ToRole="AgentSet" />
+        </EntityType>
+        <Association Name="FK_DealSet_AgentSet">
+          <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
+          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSet">
+              <PropertyRef Name="IdAgent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersSet_AgentSet">
+          <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
+          <End Role="UsersSet" Type="Self.UsersSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersSet">
+              <PropertyRef Name="IdAgent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSet_ClientSet">
+          <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
+          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSet_ItsSet">
+          <End Role="ItsSet" Type="Self.ItsSet" Multiplicity="1" />
+          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSet">
+              <PropertyRef Name="IdIts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSet_ProgramProductSet">
+          <End Role="ProgramProductSet" Type="Self.ProgramProductSet" Multiplicity="1" />
+          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramProductSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSet">
+              <PropertyRef Name="IdProgramProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities1C" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgentSet" EntityType="Self.AgentSet" />
+          <EntitySet Name="ClientSet" EntityType="Self.ClientSet" />
+          <EntitySet Name="DealSet" EntityType="Self.DealSet" />
+          <EntitySet Name="ItsSet" EntityType="Self.ItsSet" />
+          <EntitySet Name="ProgramProductSet" EntityType="Self.ProgramProductSet" />
+          <EntitySet Name="UsersSet" EntityType="Self.UsersSet" />
+          <AssociationSet Name="FK_DealSet_AgentSet" Association="Self.FK_DealSet_AgentSet">
+            <End Role="AgentSet" EntitySet="AgentSet" />
+            <End Role="DealSet" EntitySet="DealSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersSet_AgentSet" Association="Self.FK_UsersSet_AgentSet">
+            <End Role="AgentSet" EntitySet="AgentSet" />
+            <End Role="UsersSet" EntitySet="UsersSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSet_ClientSet" Association="Self.FK_DealSet_ClientSet">
+            <End Role="ClientSet" EntitySet="ClientSet" />
+            <End Role="DealSet" EntitySet="DealSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSet_ItsSet" Association="Self.FK_DealSet_ItsSet">
+            <End Role="ItsSet" EntitySet="ItsSet" />
+            <End Role="DealSet" EntitySet="DealSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSet_ProgramProductSet" Association="Self.FK_DealSet_ProgramProductSet">
+            <End Role="ProgramProductSet" EntitySet="ProgramProductSet" />
+            <End Role="DealSet" EntitySet="DealSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities1C">
+          <EntitySetMapping Name="AgentSet">
+            <EntityTypeMapping TypeName="Model.AgentSet">
+              <MappingFragment StoreEntitySet="AgentSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSet">
+            <EntityTypeMapping TypeName="Model.ClientSet">
+              <MappingFragment StoreEntitySet="ClientSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealSet">
+            <EntityTypeMapping TypeName="Model.DealSet">
+              <MappingFragment StoreEntitySet="DealSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdAgent" ColumnName="IdAgent" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdIts" ColumnName="IdIts" />
+                <ScalarProperty Name="IdProgramProduct" ColumnName="IdProgramProduct" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItsSet">
+            <EntityTypeMapping TypeName="Model.ItsSet">
+              <MappingFragment StoreEntitySet="ItsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramProductSet">
+            <EntityTypeMapping TypeName="Model.ProgramProductSet">
+              <MappingFragment StoreEntitySet="ProgramProductSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Descriptoin" ColumnName="Descriptoin" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersSet">
+            <EntityTypeMapping TypeName="Model.UsersSet">
+              <MappingFragment StoreEntitySet="UsersSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdAgent" ColumnName="IdAgent" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
