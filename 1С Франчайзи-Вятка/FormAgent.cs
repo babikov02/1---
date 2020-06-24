@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +14,8 @@ namespace _1С_Франчайзи_Вятка
 {
     public partial class FormAgent : Form
     {
+     
+
         public FormAgent()
         {
             InitializeComponent();
@@ -83,6 +87,12 @@ namespace _1С_Франчайзи_Вятка
             agentSet.Position = textBoxPosition.Text;
             agentSet.Login = textBoxLogin.Text;
             agentSet.Password = textBoxPassword.Text;
+            UsersSet users = new UsersSet();
+            users.IdAgent = agentSet.Id;
+            users.Login = textBoxLogin.Text;
+            users.Password = textBoxPassword.Text;
+            users.Type = textBoxPosition.Text;
+            Program.entities1C.UsersSet.Add(users);
             Program.entities1C.AgentSet.Add(agentSet);
             Program.entities1C.SaveChanges();
             ShowAgent();
@@ -101,12 +111,14 @@ namespace _1С_Франчайзи_Вятка
                 agentSet.Login = textBoxLogin.Text;
                 agentSet.Password = textBoxPassword.Text;
                 Program.entities1C.SaveChanges();
+                Program.entities1C.SaveChanges();
                 ShowAgent();
             }
         }
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
+            
 
             try
             {

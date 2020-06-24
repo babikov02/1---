@@ -74,6 +74,7 @@
             this.buttonClient.TabIndex = 2;
             this.buttonClient.Text = "Клиенты";
             this.buttonClient.UseVisualStyleBackColor = true;
+            this.buttonClient.Click += new System.EventHandler(this.buttonClient_Click);
             // 
             // buttonITS
             // 

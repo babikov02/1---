@@ -58,6 +58,12 @@
     <Compile Include="AgentSet.cs">
       <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
+    <Compile Include="Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientSet.cs">
       <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="UsersSet.cs">
       <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>

@@ -27,5 +27,11 @@ namespace _1С_Франчайзи_Вятка
             Form formAgent = new FormAgent();
             formAgent.Show();
         }
+
+        private void buttonClient_Click(object sender, EventArgs e)
+        {
+            Form formClient = new Client();
+            formClient.Show();
+        }
     }
 }
