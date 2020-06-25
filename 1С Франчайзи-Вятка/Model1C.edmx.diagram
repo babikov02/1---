@@ -4,18 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="63a4660d5e1e4684abecc034ee1171e2" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.AgentSet" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ClientSet" Width="1.5" PointX="7" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DealSet" Width="1.5" PointX="3.5" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ItsSet" Width="1.5" PointX="3.125" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ProgramProductSet" Width="1.5" PointX="5.875" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.UsersSet" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_DealSet_AgentSet" ManuallyRouted="false" />
+      <Diagram DiagramId="a343190e0e72472db3f93c2d756a3d5b" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AgentSet" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ClientSet" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DealSetITS" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DealSetPP" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ItsSet" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ProgramProductSet" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UsersSet" Width="1.5" PointX="5.375" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_DealSetITS_AgentSet" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DealSetPP_AgentSet" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_UsersSet_AgentSet" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_DealSet_ClientSet" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_DealSet_ItsSet" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_DealSet_ProgramProductSet" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DealSetITS_ClientSet" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DealSetPP_ClientSet" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DealSetITS_ItsSet" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DealSetPP_ProgramProductSet" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

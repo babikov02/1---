@@ -17,7 +17,8 @@ namespace _1С_Франчайзи_Вятка
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ClientSet()
         {
-            this.DealSet = new HashSet<DealSet>();
+            this.DealSetITS = new HashSet<DealSetITS>();
+            this.DealSetPP = new HashSet<DealSetPP>();
         }
     
         public int Id { get; set; }
@@ -29,6 +30,8 @@ namespace _1С_Франчайзи_Вятка
         public string ContactPerson { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DealSet> DealSet { get; set; }
+        public virtual ICollection<DealSetITS> DealSetITS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DealSetPP> DealSetPP { get; set; }
     }
 }

@@ -33,5 +33,24 @@ namespace _1С_Франчайзи_Вятка
             Form formClient = new Client();
             formClient.Show();
         }
+
+        private void buttonITS_Click(object sender, EventArgs e)
+        {
+            Form formITS = new ITS();
+            formITS.Show();
+        }
+
+        private void buttonProgramProduct_Click(object sender, EventArgs e)
+        {
+            Form formProgramProduct = new ProgramProduct();
+            formProgramProduct.Show();
+
+        }
+
+        private void buttonDeal_Click(object sender, EventArgs e)
+        {
+            Form formDeal = new Deal();
+            formDeal.Show();
+        }
     }
 }

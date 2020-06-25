@@ -12,19 +12,17 @@ namespace _1С_Франчайзи_Вятка
     using System;
     using System.Collections.Generic;
     
-    public partial class DealSet
+    public partial class DealSetPP
     {
         public int Id { get; set; }
         public int IdAgent { get; set; }
         public int IdClient { get; set; }
-        public int IdIts { get; set; }
         public int IdProgramProduct { get; set; }
         public int Amount { get; set; }
         public int TotalPrice { get; set; }
     
         public virtual AgentSet AgentSet { get; set; }
         public virtual ClientSet ClientSet { get; set; }
-        public virtual ItsSet ItsSet { get; set; }
         public virtual ProgramProductSet ProgramProductSet { get; set; }
     }
 }

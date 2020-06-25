@@ -29,25 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonAgent = new System.Windows.Forms.Button();
             this.buttonClient = new System.Windows.Forms.Button();
             this.buttonITS = new System.Windows.Forms.Button();
             this.buttonProgramProduct = new System.Windows.Forms.Button();
             this.buttonDeal = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.LemonChiffon;
-            this.pictureBox1.Image = global::_1С_Франчайзи_Вятка.Properties.Resources.logo_under_1;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 124);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // buttonAgent
             // 
@@ -87,6 +76,7 @@
             this.buttonITS.TabIndex = 3;
             this.buttonITS.Text = "ИТС";
             this.buttonITS.UseVisualStyleBackColor = true;
+            this.buttonITS.Click += new System.EventHandler(this.buttonITS_Click);
             // 
             // buttonProgramProduct
             // 
@@ -99,6 +89,7 @@
             this.buttonProgramProduct.TabIndex = 4;
             this.buttonProgramProduct.Text = "Программные продукты";
             this.buttonProgramProduct.UseVisualStyleBackColor = true;
+            this.buttonProgramProduct.Click += new System.EventHandler(this.buttonProgramProduct_Click);
             // 
             // buttonDeal
             // 
@@ -111,6 +102,18 @@
             this.buttonDeal.TabIndex = 5;
             this.buttonDeal.Text = "Сделки";
             this.buttonDeal.UseVisualStyleBackColor = true;
+            this.buttonDeal.Click += new System.EventHandler(this.buttonDeal_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.LemonChiffon;
+            this.pictureBox1.Image = global::_1С_Франчайзи_Вятка.Properties.Resources.logo_under_1;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 124);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Menu
             // 

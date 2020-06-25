@@ -67,7 +67,37 @@
     <Compile Include="ClientSet.cs">
       <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
-    <Compile Include="DealSet.cs">
+    <Compile Include="Deal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deal.Designer.cs">
+      <DependentUpon>Deal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DealITS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DealITS.Designer.cs">
+      <DependentUpon>DealITS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DealPP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DealPP.Designer.cs">
+      <DependentUpon>DealPP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DealSetITS.cs">
+      <DependentUpon>Model1C.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DealSetPP.cs">
+      <DependentUpon>Model1C.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITS.Designer.cs">
+      <DependentUpon>ITS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItsSet.cs">
       <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
@@ -81,9 +111,6 @@
     </Compile>
     <Compile Include="FormAgent.Designer.cs">
       <DependentUpon>FormAgent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ItsSet.cs">
-      <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
     <Compile Include="Model1C.Context.cs">
       <AutoGen>True</AutoGen>
@@ -101,6 +128,12 @@
       <DependentUpon>Model1C.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramProduct.Designer.cs">
+      <DependentUpon>ProgramProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramProductSet.cs">
       <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
@@ -111,11 +144,26 @@
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Deal.resx">
+      <DependentUpon>Deal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DealITS.resx">
+      <DependentUpon>DealITS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DealPP.resx">
+      <DependentUpon>DealPP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITS.resx">
+      <DependentUpon>ITS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgent.resx">
       <DependentUpon>FormAgent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramProduct.resx">
+      <DependentUpon>ProgramProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -149,21 +197,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\logo_under_1.png" />
+    <None Include="Resources\logo-1c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model1C.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1C.Context.cs</LastGenOutput>
       <DependentUpon>Model1C.edmx</DependentUpon>
+      <LastGenOutput>Model1C.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model1C.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1C.edmx</DependentUpon>
       <LastGenOutput>Model1C.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\logo_under_1.png" />
-    <None Include="Resources\logo-1c.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

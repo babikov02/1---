@@ -30,7 +30,7 @@
           <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ContactPerson" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="DealSet">
+        <EntityType Name="DealSetITS">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -38,6 +38,16 @@
           <Property Name="IdAgent" Type="int" Nullable="false" />
           <Property Name="IdClient" Type="int" Nullable="false" />
           <Property Name="IdIts" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DealSetPP">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAgent" Type="int" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
           <Property Name="IdProgramProduct" Type="int" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
           <Property Name="TotalPrice" Type="int" Nullable="false" />
@@ -70,50 +80,74 @@
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK_DealSet_AgentSet">
+        <Association Name="FK_DealSetITS_AgentSet">
           <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
-          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <End Role="DealSetITS" Type="Self.DealSetITS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AgentSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DealSet">
+            <Dependent Role="DealSetITS">
               <PropertyRef Name="IdAgent" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DealSet_ClientSet">
+        <Association Name="FK_DealSetITS_ClientSet">
           <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
-          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <End Role="DealSetITS" Type="Self.DealSetITS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClientSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DealSet">
+            <Dependent Role="DealSetITS">
               <PropertyRef Name="IdClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DealSet_ItsSet">
+        <Association Name="FK_DealSetITS_ItsSet">
           <End Role="ItsSet" Type="Self.ItsSet" Multiplicity="1" />
-          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <End Role="DealSetITS" Type="Self.DealSetITS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ItsSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DealSet">
+            <Dependent Role="DealSetITS">
               <PropertyRef Name="IdIts" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DealSet_ProgramProductSet">
+        <Association Name="FK_DealSetPP_AgentSet">
+          <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
+          <End Role="DealSetPP" Type="Self.DealSetPP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSetPP">
+              <PropertyRef Name="IdAgent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSetPP_ClientSet">
+          <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
+          <End Role="DealSetPP" Type="Self.DealSetPP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSetPP">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSetPP_ProgramProductSet">
           <End Role="ProgramProductSet" Type="Self.ProgramProductSet" Multiplicity="1" />
-          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <End Role="DealSetPP" Type="Self.DealSetPP" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProgramProductSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DealSet">
+            <Dependent Role="DealSetPP">
               <PropertyRef Name="IdProgramProduct" />
             </Dependent>
           </ReferentialConstraint>
@@ -133,25 +167,34 @@
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="AgentSet" EntityType="Self.AgentSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DealSet" EntityType="Self.DealSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealSetITS" EntityType="Self.DealSetITS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealSetPP" EntityType="Self.DealSetPP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItsSet" EntityType="Self.ItsSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgramProductSet" EntityType="Self.ProgramProductSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersSet" EntityType="Self.UsersSet" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_DealSet_AgentSet" Association="Self.FK_DealSet_AgentSet">
+          <AssociationSet Name="FK_DealSetITS_AgentSet" Association="Self.FK_DealSetITS_AgentSet">
             <End Role="AgentSet" EntitySet="AgentSet" />
-            <End Role="DealSet" EntitySet="DealSet" />
+            <End Role="DealSetITS" EntitySet="DealSetITS" />
           </AssociationSet>
-          <AssociationSet Name="FK_DealSet_ClientSet" Association="Self.FK_DealSet_ClientSet">
+          <AssociationSet Name="FK_DealSetITS_ClientSet" Association="Self.FK_DealSetITS_ClientSet">
             <End Role="ClientSet" EntitySet="ClientSet" />
-            <End Role="DealSet" EntitySet="DealSet" />
+            <End Role="DealSetITS" EntitySet="DealSetITS" />
           </AssociationSet>
-          <AssociationSet Name="FK_DealSet_ItsSet" Association="Self.FK_DealSet_ItsSet">
+          <AssociationSet Name="FK_DealSetITS_ItsSet" Association="Self.FK_DealSetITS_ItsSet">
             <End Role="ItsSet" EntitySet="ItsSet" />
-            <End Role="DealSet" EntitySet="DealSet" />
+            <End Role="DealSetITS" EntitySet="DealSetITS" />
           </AssociationSet>
-          <AssociationSet Name="FK_DealSet_ProgramProductSet" Association="Self.FK_DealSet_ProgramProductSet">
+          <AssociationSet Name="FK_DealSetPP_AgentSet" Association="Self.FK_DealSetPP_AgentSet">
+            <End Role="AgentSet" EntitySet="AgentSet" />
+            <End Role="DealSetPP" EntitySet="DealSetPP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSetPP_ClientSet" Association="Self.FK_DealSetPP_ClientSet">
+            <End Role="ClientSet" EntitySet="ClientSet" />
+            <End Role="DealSetPP" EntitySet="DealSetPP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSetPP_ProgramProductSet" Association="Self.FK_DealSetPP_ProgramProductSet">
             <End Role="ProgramProductSet" EntitySet="ProgramProductSet" />
-            <End Role="DealSet" EntitySet="DealSet" />
+            <End Role="DealSetPP" EntitySet="DealSetPP" />
           </AssociationSet>
           <AssociationSet Name="FK_UsersSet_AgentSet" Association="Self.FK_UsersSet_AgentSet">
             <End Role="AgentSet" EntitySet="AgentSet" />
@@ -175,7 +218,8 @@
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DealSet" Relationship="Self.FK_DealSet_AgentSet" FromRole="AgentSet" ToRole="DealSet" />
+          <NavigationProperty Name="DealSetITS" Relationship="Self.FK_DealSetITS_AgentSet" FromRole="AgentSet" ToRole="DealSetITS" />
+          <NavigationProperty Name="DealSetPP" Relationship="Self.FK_DealSetPP_AgentSet" FromRole="AgentSet" ToRole="DealSetPP" />
           <NavigationProperty Name="UsersSet" Relationship="Self.FK_UsersSet_AgentSet" FromRole="AgentSet" ToRole="UsersSet" />
         </EntityType>
         <EntityType Name="ClientSet">
@@ -189,9 +233,10 @@
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ContactPerson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DealSet" Relationship="Self.FK_DealSet_ClientSet" FromRole="ClientSet" ToRole="DealSet" />
+          <NavigationProperty Name="DealSetITS" Relationship="Self.FK_DealSetITS_ClientSet" FromRole="ClientSet" ToRole="DealSetITS" />
+          <NavigationProperty Name="DealSetPP" Relationship="Self.FK_DealSetPP_ClientSet" FromRole="ClientSet" ToRole="DealSetPP" />
         </EntityType>
-        <EntityType Name="DealSet">
+        <EntityType Name="DealSetITS">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -199,13 +244,25 @@
           <Property Name="IdAgent" Type="Int32" Nullable="false" />
           <Property Name="IdClient" Type="Int32" Nullable="false" />
           <Property Name="IdIts" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgentSet" Relationship="Self.FK_DealSetITS_AgentSet" FromRole="DealSetITS" ToRole="AgentSet" />
+          <NavigationProperty Name="ClientSet" Relationship="Self.FK_DealSetITS_ClientSet" FromRole="DealSetITS" ToRole="ClientSet" />
+          <NavigationProperty Name="ItsSet" Relationship="Self.FK_DealSetITS_ItsSet" FromRole="DealSetITS" ToRole="ItsSet" />
+        </EntityType>
+        <EntityType Name="DealSetPP">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAgent" Type="Int32" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
           <Property Name="IdProgramProduct" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="TotalPrice" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AgentSet" Relationship="Self.FK_DealSet_AgentSet" FromRole="DealSet" ToRole="AgentSet" />
-          <NavigationProperty Name="ClientSet" Relationship="Self.FK_DealSet_ClientSet" FromRole="DealSet" ToRole="ClientSet" />
-          <NavigationProperty Name="ItsSet" Relationship="Self.FK_DealSet_ItsSet" FromRole="DealSet" ToRole="ItsSet" />
-          <NavigationProperty Name="ProgramProductSet" Relationship="Self.FK_DealSet_ProgramProductSet" FromRole="DealSet" ToRole="ProgramProductSet" />
+          <NavigationProperty Name="AgentSet" Relationship="Self.FK_DealSetPP_AgentSet" FromRole="DealSetPP" ToRole="AgentSet" />
+          <NavigationProperty Name="ClientSet" Relationship="Self.FK_DealSetPP_ClientSet" FromRole="DealSetPP" ToRole="ClientSet" />
+          <NavigationProperty Name="ProgramProductSet" Relationship="Self.FK_DealSetPP_ProgramProductSet" FromRole="DealSetPP" ToRole="ProgramProductSet" />
         </EntityType>
         <EntityType Name="ItsSet">
           <Key>
@@ -215,7 +272,7 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DealSet" Relationship="Self.FK_DealSet_ItsSet" FromRole="ItsSet" ToRole="DealSet" />
+          <NavigationProperty Name="DealSetITS" Relationship="Self.FK_DealSetITS_ItsSet" FromRole="ItsSet" ToRole="DealSetITS" />
         </EntityType>
         <EntityType Name="ProgramProductSet">
           <Key>
@@ -225,7 +282,7 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descriptoin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DealSet" Relationship="Self.FK_DealSet_ProgramProductSet" FromRole="ProgramProductSet" ToRole="DealSet" />
+          <NavigationProperty Name="DealSetPP" Relationship="Self.FK_DealSetPP_ProgramProductSet" FromRole="ProgramProductSet" ToRole="DealSetPP" />
         </EntityType>
         <EntityType Name="UsersSet">
           <Key>
@@ -238,14 +295,26 @@
           <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AgentSet" Relationship="Self.FK_UsersSet_AgentSet" FromRole="UsersSet" ToRole="AgentSet" />
         </EntityType>
-        <Association Name="FK_DealSet_AgentSet">
+        <Association Name="FK_DealSetITS_AgentSet">
           <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
-          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <End Role="DealSetITS" Type="Self.DealSetITS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AgentSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DealSet">
+            <Dependent Role="DealSetITS">
+              <PropertyRef Name="IdAgent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSetPP_AgentSet">
+          <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
+          <End Role="DealSetPP" Type="Self.DealSetPP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSetPP">
               <PropertyRef Name="IdAgent" />
             </Dependent>
           </ReferentialConstraint>
@@ -262,38 +331,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DealSet_ClientSet">
+        <Association Name="FK_DealSetITS_ClientSet">
           <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
-          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <End Role="DealSetITS" Type="Self.DealSetITS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClientSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DealSet">
+            <Dependent Role="DealSetITS">
               <PropertyRef Name="IdClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DealSet_ItsSet">
+        <Association Name="FK_DealSetPP_ClientSet">
+          <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
+          <End Role="DealSetPP" Type="Self.DealSetPP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DealSetPP">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealSetITS_ItsSet">
           <End Role="ItsSet" Type="Self.ItsSet" Multiplicity="1" />
-          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <End Role="DealSetITS" Type="Self.DealSetITS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ItsSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DealSet">
+            <Dependent Role="DealSetITS">
               <PropertyRef Name="IdIts" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DealSet_ProgramProductSet">
+        <Association Name="FK_DealSetPP_ProgramProductSet">
           <End Role="ProgramProductSet" Type="Self.ProgramProductSet" Multiplicity="1" />
-          <End Role="DealSet" Type="Self.DealSet" Multiplicity="*" />
+          <End Role="DealSetPP" Type="Self.DealSetPP" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProgramProductSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DealSet">
+            <Dependent Role="DealSetPP">
               <PropertyRef Name="IdProgramProduct" />
             </Dependent>
           </ReferentialConstraint>
@@ -301,29 +382,38 @@
         <EntityContainer Name="Entities1C" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AgentSet" EntityType="Self.AgentSet" />
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" />
-          <EntitySet Name="DealSet" EntityType="Self.DealSet" />
+          <EntitySet Name="DealSetITS" EntityType="Self.DealSetITS" />
+          <EntitySet Name="DealSetPP" EntityType="Self.DealSetPP" />
           <EntitySet Name="ItsSet" EntityType="Self.ItsSet" />
           <EntitySet Name="ProgramProductSet" EntityType="Self.ProgramProductSet" />
           <EntitySet Name="UsersSet" EntityType="Self.UsersSet" />
-          <AssociationSet Name="FK_DealSet_AgentSet" Association="Self.FK_DealSet_AgentSet">
+          <AssociationSet Name="FK_DealSetITS_AgentSet" Association="Self.FK_DealSetITS_AgentSet">
             <End Role="AgentSet" EntitySet="AgentSet" />
-            <End Role="DealSet" EntitySet="DealSet" />
+            <End Role="DealSetITS" EntitySet="DealSetITS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSetPP_AgentSet" Association="Self.FK_DealSetPP_AgentSet">
+            <End Role="AgentSet" EntitySet="AgentSet" />
+            <End Role="DealSetPP" EntitySet="DealSetPP" />
           </AssociationSet>
           <AssociationSet Name="FK_UsersSet_AgentSet" Association="Self.FK_UsersSet_AgentSet">
             <End Role="AgentSet" EntitySet="AgentSet" />
             <End Role="UsersSet" EntitySet="UsersSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_DealSet_ClientSet" Association="Self.FK_DealSet_ClientSet">
+          <AssociationSet Name="FK_DealSetITS_ClientSet" Association="Self.FK_DealSetITS_ClientSet">
             <End Role="ClientSet" EntitySet="ClientSet" />
-            <End Role="DealSet" EntitySet="DealSet" />
+            <End Role="DealSetITS" EntitySet="DealSetITS" />
           </AssociationSet>
-          <AssociationSet Name="FK_DealSet_ItsSet" Association="Self.FK_DealSet_ItsSet">
+          <AssociationSet Name="FK_DealSetPP_ClientSet" Association="Self.FK_DealSetPP_ClientSet">
+            <End Role="ClientSet" EntitySet="ClientSet" />
+            <End Role="DealSetPP" EntitySet="DealSetPP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealSetITS_ItsSet" Association="Self.FK_DealSetITS_ItsSet">
             <End Role="ItsSet" EntitySet="ItsSet" />
-            <End Role="DealSet" EntitySet="DealSet" />
+            <End Role="DealSetITS" EntitySet="DealSetITS" />
           </AssociationSet>
-          <AssociationSet Name="FK_DealSet_ProgramProductSet" Association="Self.FK_DealSet_ProgramProductSet">
+          <AssociationSet Name="FK_DealSetPP_ProgramProductSet" Association="Self.FK_DealSetPP_ProgramProductSet">
             <End Role="ProgramProductSet" EntitySet="ProgramProductSet" />
-            <End Role="DealSet" EntitySet="DealSet" />
+            <End Role="DealSetPP" EntitySet="DealSetPP" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -359,13 +449,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DealSet">
-            <EntityTypeMapping TypeName="Model.DealSet">
-              <MappingFragment StoreEntitySet="DealSet">
+          <EntitySetMapping Name="DealSetITS">
+            <EntityTypeMapping TypeName="Model.DealSetITS">
+              <MappingFragment StoreEntitySet="DealSetITS">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdAgent" ColumnName="IdAgent" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="IdIts" ColumnName="IdIts" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealSetPP">
+            <EntityTypeMapping TypeName="Model.DealSetPP">
+              <MappingFragment StoreEntitySet="DealSetPP">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdAgent" ColumnName="IdAgent" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="IdProgramProduct" ColumnName="IdProgramProduct" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />

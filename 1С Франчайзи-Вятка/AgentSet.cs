@@ -17,7 +17,8 @@ namespace _1С_Франчайзи_Вятка
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AgentSet()
         {
-            this.DealSet = new HashSet<DealSet>();
+            this.DealSetITS = new HashSet<DealSetITS>();
+            this.DealSetPP = new HashSet<DealSetPP>();
             this.UsersSet = new HashSet<UsersSet>();
         }
     
@@ -31,7 +32,9 @@ namespace _1С_Франчайзи_Вятка
         public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DealSet> DealSet { get; set; }
+        public virtual ICollection<DealSetITS> DealSetITS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DealSetPP> DealSetPP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersSet> UsersSet { get; set; }
     }

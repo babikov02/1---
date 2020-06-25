@@ -21,7 +21,7 @@ namespace _1С_Франчайзи_Вятка
         void ShowClient()
         {
             listViewClient.Items.Clear();
-            foreach (ClientSet clientSet in Program.entities1C.ClientSet)
+            foreach (ClientSet clientSet in Program.entities1c.ClientSet)
             {
                 ListViewItem item = new ListViewItem(new string[]
                 {
@@ -72,8 +72,8 @@ namespace _1С_Франчайзи_Вятка
             clientSet.Email = textBoxEmail.Text;
             clientSet.Phone = textBoxPhone.Text;
             clientSet.ContactPerson = textBoxContactPerson.Text;
-            Program.entities1C.ClientSet.Add(clientSet);
-            Program.entities1C.SaveChanges();
+            Program.entities1c.ClientSet.Add(clientSet);
+            Program.entities1c.SaveChanges();
             ShowClient();
         }
 
@@ -88,7 +88,7 @@ namespace _1С_Франчайзи_Вятка
                 clientSet.Email = textBoxEmail.Text;
                 clientSet.Phone = textBoxPhone.Text;
                 clientSet.ContactPerson = textBoxContactPerson.Text;
-                Program.entities1C.SaveChanges();
+                Program.entities1c.SaveChanges();
                 ShowClient();
             }
         }
@@ -100,8 +100,8 @@ namespace _1С_Франчайзи_Вятка
                 if (listViewClient.SelectedItems.Count == 1)
                 {
                     ClientSet clientSet = listViewClient.SelectedItems[0].Tag as ClientSet;
-                    Program.entities1C.ClientSet.Remove(clientSet);
-                    Program.entities1C.SaveChanges();
+                    Program.entities1c.ClientSet.Remove(clientSet);
+                    Program.entities1c.SaveChanges();
                     ShowClient();
                 }
                 textBoxINN.Text = "";
@@ -114,6 +114,15 @@ namespace _1С_Франчайзи_Вятка
             catch
             {
                 MessageBox.Show("Невозможно удалить, эта запись используется!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBoxINN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8)
+            {
+                e.Handled = true;
             }
         }
     }

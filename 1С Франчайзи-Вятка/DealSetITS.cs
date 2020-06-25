@@ -12,20 +12,17 @@ namespace _1С_Франчайзи_Вятка
     using System;
     using System.Collections.Generic;
     
-    public partial class ItsSet
+    public partial class DealSetITS
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ItsSet()
-        {
-            this.DealSetITS = new HashSet<DealSetITS>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Price { get; set; }
+        public int IdAgent { get; set; }
+        public int IdClient { get; set; }
+        public int IdIts { get; set; }
+        public int Amount { get; set; }
+        public int TotalPrice { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DealSetITS> DealSetITS { get; set; }
+        public virtual AgentSet AgentSet { get; set; }
+        public virtual ClientSet ClientSet { get; set; }
+        public virtual ItsSet ItsSet { get; set; }
     }
 }

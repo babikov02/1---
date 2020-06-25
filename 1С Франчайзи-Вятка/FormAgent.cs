@@ -25,7 +25,7 @@ namespace _1С_Франчайзи_Вятка
         void ShowAgent()
         {
             listViewAgent.Items.Clear();
-            foreach (AgentSet agentSet in Program.entities1C.AgentSet)
+            foreach (AgentSet agentSet in Program.entities1c.AgentSet)
             {
                 ListViewItem item = new ListViewItem(new string[]
                 {
@@ -92,9 +92,9 @@ namespace _1С_Франчайзи_Вятка
             users.Login = textBoxLogin.Text;
             users.Password = textBoxPassword.Text;
             users.Type = textBoxPosition.Text;
-            Program.entities1C.UsersSet.Add(users);
-            Program.entities1C.AgentSet.Add(agentSet);
-            Program.entities1C.SaveChanges();
+            Program.entities1c.UsersSet.Add(users);
+            Program.entities1c.AgentSet.Add(agentSet);
+            Program.entities1c.SaveChanges();
             ShowAgent();
         }
 
@@ -110,8 +110,7 @@ namespace _1С_Франчайзи_Вятка
                 agentSet.Position = textBoxPosition.Text;
                 agentSet.Login = textBoxLogin.Text;
                 agentSet.Password = textBoxPassword.Text;
-                Program.entities1C.SaveChanges();
-                Program.entities1C.SaveChanges();
+                Program.entities1c.SaveChanges();
                 ShowAgent();
             }
         }
@@ -125,8 +124,8 @@ namespace _1С_Франчайзи_Вятка
                 if (listViewAgent.SelectedItems.Count == 1)
                 {
                     AgentSet agentSet = listViewAgent.SelectedItems[0].Tag as AgentSet;
-                    Program.entities1C.AgentSet.Remove(agentSet);
-                    Program.entities1C.SaveChanges();
+                    Program.entities1c.AgentSet.Remove(agentSet);
+                    Program.entities1c.SaveChanges();
                     ShowAgent();
                 }
                 textBoxLastName.Text = "";
