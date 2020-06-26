@@ -51,7 +51,6 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
@@ -114,6 +113,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(100, 22);
             this.textBoxPassword.TabIndex = 6;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // labelName
             // 
@@ -202,8 +202,7 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8});
+            this.columnHeader7});
             this.listViewAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listViewAgent.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listViewAgent.FullRowSelect = true;
@@ -233,6 +232,7 @@
             // 
             this.columnHeader3.Text = "Имя";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 98;
             // 
             // columnHeader4
             // 
@@ -256,12 +256,7 @@
             // 
             this.columnHeader7.Text = "Логин";
             this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Пароль";
-            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader8.Width = 85;
+            this.columnHeader7.Width = 106;
             // 
             // buttonAdd
             // 
@@ -373,6 +368,5 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
     }
 }

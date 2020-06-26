@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace _1С_Франчайзи_Вятка
 {
-    public struct User
+    public struct Agent
     {
         public string login;
         public string password;

@@ -15,8 +15,8 @@ namespace _1С_Франчайзи_Вятка
         public Menu()
         {
             InitializeComponent();
-            if (Autorization.users.type == "Секретарь") buttonAgent.Enabled = false;
-            labelHello.Text = "Приветствую тебя, " + Autorization.users.login;
+            if (Autorization.agent.type == "Секретарь") buttonAgent.Enabled = false;
+            labelHello.Text = "Приветствую тебя, " + Autorization.agent.login;
         }
 
         private void Menu_Load(object sender, EventArgs e)

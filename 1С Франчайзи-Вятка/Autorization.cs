@@ -12,7 +12,7 @@ namespace _1С_Франчайзи_Вятка
 {
     public partial class Autorization : Form
     {
-        public static User users = new User();
+        public static Agent agent = new Agent();
         public Autorization()
         {
             InitializeComponent();
@@ -32,15 +32,15 @@ namespace _1С_Франчайзи_Вятка
             else
             {
                 bool key = false;
-                foreach (UsersSet user in Program.entities1c.UsersSet)
+                foreach (AgentSet agents in Program.entities1c.AgentSet)
                 {
-                    if (textBoxLogin.Text == user.Login && textBoxPassword.Text == user.Password)
+                    if (textBoxLogin.Text == agents.Login && textBoxPassword.Text == agents.Password)
                     {
                         key = true;
                         
-                        users.login = user.Login;
-                        users.password = user.Password;
-                        users.type = user.Type;
+                        agent.login = agents.Login;
+                        agent.password = agents.Password;
+                        agent.type = agents.Position;
                     }
                 }
                 if (!key)

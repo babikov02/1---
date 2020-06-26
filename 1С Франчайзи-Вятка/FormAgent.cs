@@ -30,7 +30,7 @@ namespace _1С_Франчайзи_Вятка
                 ListViewItem item = new ListViewItem(new string[]
                 {
                         agentSet.Id.ToString(), agentSet.LastName, agentSet.Name, agentSet.MiddleName,agentSet.Phone,
-                    agentSet.Position, agentSet.Login, agentSet.Password
+                    agentSet.Position, agentSet.Login
                 });
 
                 item.Tag = agentSet;
@@ -87,12 +87,6 @@ namespace _1С_Франчайзи_Вятка
             agentSet.Position = textBoxPosition.Text;
             agentSet.Login = textBoxLogin.Text;
             agentSet.Password = textBoxPassword.Text;
-            UsersSet users = new UsersSet();
-            users.IdAgent = agentSet.Id;
-            users.Login = textBoxLogin.Text;
-            users.Password = textBoxPassword.Text;
-            users.Type = textBoxPosition.Text;
-            Program.entities1c.UsersSet.Add(users);
             Program.entities1c.AgentSet.Add(agentSet);
             Program.entities1c.SaveChanges();
             ShowAgent();
@@ -100,8 +94,10 @@ namespace _1С_Франчайзи_Вятка
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
+
             if (listViewAgent.SelectedItems.Count == 1)
             {
+
                 AgentSet agentSet = listViewAgent.SelectedItems[0].Tag as AgentSet;
                 agentSet.LastName = textBoxLastName.Text;
                 agentSet.Name = textBoxName.Text;
@@ -112,6 +108,7 @@ namespace _1С_Франчайзи_Вятка
                 agentSet.Password = textBoxPassword.Text;
                 Program.entities1c.SaveChanges();
                 ShowAgent();
+
             }
         }
 

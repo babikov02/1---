@@ -31,6 +31,5 @@ namespace _1С_Франчайзи_Вятка
         public virtual DbSet<DealSetPP> DealSetPP { get; set; }
         public virtual DbSet<ItsSet> ItsSet { get; set; }
         public virtual DbSet<ProgramProductSet> ProgramProductSet { get; set; }
-        public virtual DbSet<UsersSet> UsersSet { get; set; }
     }
 }

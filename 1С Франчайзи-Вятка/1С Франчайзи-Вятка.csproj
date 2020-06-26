@@ -144,9 +144,6 @@
       <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsersSet.cs">
-      <DependentUpon>Model1C.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Autorization.resx">
       <DependentUpon>Autorization.cs</DependentUpon>
     </EmbeddedResource>

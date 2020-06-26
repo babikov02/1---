@@ -70,16 +70,6 @@
           <Property Name="Descriptoin" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="UsersSet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdAgent" Type="int" Nullable="false" />
-          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
         <Association Name="FK_DealSetITS_AgentSet">
           <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
           <End Role="DealSetITS" Type="Self.DealSetITS" Multiplicity="*" />
@@ -152,18 +142,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UsersSet_AgentSet">
-          <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
-          <End Role="UsersSet" Type="Self.UsersSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AgentSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsersSet">
-              <PropertyRef Name="IdAgent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="AgentSet" EntityType="Self.AgentSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" Schema="dbo" store:Type="Tables" />
@@ -171,7 +149,6 @@
           <EntitySet Name="DealSetPP" EntityType="Self.DealSetPP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItsSet" EntityType="Self.ItsSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgramProductSet" EntityType="Self.ProgramProductSet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsersSet" EntityType="Self.UsersSet" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_DealSetITS_AgentSet" Association="Self.FK_DealSetITS_AgentSet">
             <End Role="AgentSet" EntitySet="AgentSet" />
             <End Role="DealSetITS" EntitySet="DealSetITS" />
@@ -196,10 +173,6 @@
             <End Role="ProgramProductSet" EntitySet="ProgramProductSet" />
             <End Role="DealSetPP" EntitySet="DealSetPP" />
           </AssociationSet>
-          <AssociationSet Name="FK_UsersSet_AgentSet" Association="Self.FK_UsersSet_AgentSet">
-            <End Role="AgentSet" EntitySet="AgentSet" />
-            <End Role="UsersSet" EntitySet="UsersSet" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -220,7 +193,6 @@
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="DealSetITS" Relationship="Self.FK_DealSetITS_AgentSet" FromRole="AgentSet" ToRole="DealSetITS" />
           <NavigationProperty Name="DealSetPP" Relationship="Self.FK_DealSetPP_AgentSet" FromRole="AgentSet" ToRole="DealSetPP" />
-          <NavigationProperty Name="UsersSet" Relationship="Self.FK_UsersSet_AgentSet" FromRole="AgentSet" ToRole="UsersSet" />
         </EntityType>
         <EntityType Name="ClientSet">
           <Key>
@@ -284,17 +256,6 @@
           <Property Name="Price" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DealSetPP" Relationship="Self.FK_DealSetPP_ProgramProductSet" FromRole="ProgramProductSet" ToRole="DealSetPP" />
         </EntityType>
-        <EntityType Name="UsersSet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdAgent" Type="Int32" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AgentSet" Relationship="Self.FK_UsersSet_AgentSet" FromRole="UsersSet" ToRole="AgentSet" />
-        </EntityType>
         <Association Name="FK_DealSetITS_AgentSet">
           <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
           <End Role="DealSetITS" Type="Self.DealSetITS" Multiplicity="*" />
@@ -315,18 +276,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="DealSetPP">
-              <PropertyRef Name="IdAgent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UsersSet_AgentSet">
-          <End Role="AgentSet" Type="Self.AgentSet" Multiplicity="1" />
-          <End Role="UsersSet" Type="Self.UsersSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AgentSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsersSet">
               <PropertyRef Name="IdAgent" />
             </Dependent>
           </ReferentialConstraint>
@@ -386,7 +335,6 @@
           <EntitySet Name="DealSetPP" EntityType="Self.DealSetPP" />
           <EntitySet Name="ItsSet" EntityType="Self.ItsSet" />
           <EntitySet Name="ProgramProductSet" EntityType="Self.ProgramProductSet" />
-          <EntitySet Name="UsersSet" EntityType="Self.UsersSet" />
           <AssociationSet Name="FK_DealSetITS_AgentSet" Association="Self.FK_DealSetITS_AgentSet">
             <End Role="AgentSet" EntitySet="AgentSet" />
             <End Role="DealSetITS" EntitySet="DealSetITS" />
@@ -394,10 +342,6 @@
           <AssociationSet Name="FK_DealSetPP_AgentSet" Association="Self.FK_DealSetPP_AgentSet">
             <End Role="AgentSet" EntitySet="AgentSet" />
             <End Role="DealSetPP" EntitySet="DealSetPP" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UsersSet_AgentSet" Association="Self.FK_UsersSet_AgentSet">
-            <End Role="AgentSet" EntitySet="AgentSet" />
-            <End Role="UsersSet" EntitySet="UsersSet" />
           </AssociationSet>
           <AssociationSet Name="FK_DealSetITS_ClientSet" Association="Self.FK_DealSetITS_ClientSet">
             <End Role="ClientSet" EntitySet="ClientSet" />
@@ -490,17 +434,6 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Descriptoin" ColumnName="Descriptoin" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsersSet">
-            <EntityTypeMapping TypeName="Model.UsersSet">
-              <MappingFragment StoreEntitySet="UsersSet">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdAgent" ColumnName="IdAgent" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
