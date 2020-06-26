@@ -58,6 +58,12 @@
     <Compile Include="AgentSet.cs">
       <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
+    <Compile Include="Autorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Autorization.Designer.cs">
+      <DependentUpon>Autorization.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     <Compile Include="UsersSet.cs">
       <DependentUpon>Model1C.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Autorization.resx">
+      <DependentUpon>Autorization.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>

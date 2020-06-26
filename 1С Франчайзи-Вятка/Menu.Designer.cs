@@ -35,6 +35,7 @@
             this.buttonProgramProduct = new System.Windows.Forms.Button();
             this.buttonDeal = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelHello = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@
             this.buttonAgent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonAgent.ForeColor = System.Drawing.Color.Red;
-            this.buttonAgent.Location = new System.Drawing.Point(12, 142);
+            this.buttonAgent.Location = new System.Drawing.Point(12, 164);
             this.buttonAgent.Name = "buttonAgent";
             this.buttonAgent.Size = new System.Drawing.Size(300, 56);
             this.buttonAgent.TabIndex = 1;
@@ -57,7 +58,7 @@
             this.buttonClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonClient.ForeColor = System.Drawing.Color.Red;
-            this.buttonClient.Location = new System.Drawing.Point(12, 204);
+            this.buttonClient.Location = new System.Drawing.Point(12, 226);
             this.buttonClient.Name = "buttonClient";
             this.buttonClient.Size = new System.Drawing.Size(300, 56);
             this.buttonClient.TabIndex = 2;
@@ -70,7 +71,7 @@
             this.buttonITS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonITS.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonITS.ForeColor = System.Drawing.Color.Red;
-            this.buttonITS.Location = new System.Drawing.Point(12, 266);
+            this.buttonITS.Location = new System.Drawing.Point(12, 288);
             this.buttonITS.Name = "buttonITS";
             this.buttonITS.Size = new System.Drawing.Size(300, 56);
             this.buttonITS.TabIndex = 3;
@@ -83,7 +84,7 @@
             this.buttonProgramProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProgramProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonProgramProduct.ForeColor = System.Drawing.Color.Red;
-            this.buttonProgramProduct.Location = new System.Drawing.Point(12, 328);
+            this.buttonProgramProduct.Location = new System.Drawing.Point(12, 350);
             this.buttonProgramProduct.Name = "buttonProgramProduct";
             this.buttonProgramProduct.Size = new System.Drawing.Size(300, 56);
             this.buttonProgramProduct.TabIndex = 4;
@@ -96,7 +97,7 @@
             this.buttonDeal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonDeal.ForeColor = System.Drawing.Color.Red;
-            this.buttonDeal.Location = new System.Drawing.Point(12, 390);
+            this.buttonDeal.Location = new System.Drawing.Point(12, 412);
             this.buttonDeal.Name = "buttonDeal";
             this.buttonDeal.Size = new System.Drawing.Size(300, 56);
             this.buttonDeal.TabIndex = 5;
@@ -115,12 +116,24 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // labelHello
+            // 
+            this.labelHello.AutoSize = true;
+            this.labelHello.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelHello.ForeColor = System.Drawing.Color.Red;
+            this.labelHello.Location = new System.Drawing.Point(56, 139);
+            this.labelHello.Name = "labelHello";
+            this.labelHello.Size = new System.Drawing.Size(45, 16);
+            this.labelHello.TabIndex = 6;
+            this.labelHello.Text = "label1";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
-            this.ClientSize = new System.Drawing.Size(324, 458);
+            this.ClientSize = new System.Drawing.Size(324, 480);
+            this.Controls.Add(this.labelHello);
             this.Controls.Add(this.buttonDeal);
             this.Controls.Add(this.buttonProgramProduct);
             this.Controls.Add(this.buttonITS);
@@ -134,6 +147,7 @@
             this.Load += new System.EventHandler(this.Menu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -145,6 +159,7 @@
         private System.Windows.Forms.Button buttonITS;
         private System.Windows.Forms.Button buttonProgramProduct;
         private System.Windows.Forms.Button buttonDeal;
+        private System.Windows.Forms.Label labelHello;
     }
 }
 

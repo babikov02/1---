@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a343190e0e72472db3f93c2d756a3d5b" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.AgentSet" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ClientSet" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DealSetITS" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DealSetPP" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ItsSet" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ProgramProductSet" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.UsersSet" Width="1.5" PointX="5.375" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AgentSet" Width="1.5" PointX="0.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ClientSet" Width="1.5" PointX="0.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DealSetITS" Width="1.5" PointX="2.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DealSetPP" Width="1.5" PointX="5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ItsSet" Width="1.5" PointX="4.875" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ProgramProductSet" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UsersSet" Width="1.5" PointX="6.875" PointY="2.375" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_DealSetITS_AgentSet" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_DealSetPP_AgentSet" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_UsersSet_AgentSet" ManuallyRouted="false" />

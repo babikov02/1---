@@ -6,8 +6,15 @@ using System.Windows.Forms;
 
 namespace _1С_Франчайзи_Вятка
 {
+    public struct User
+    {
+        public string login;
+        public string password;
+        public string type;
+    }
     static class Program
     {
+        
         public static Entities1C entities1c = new Entities1C();
         /// <summary>
         /// Главная точка входа для приложения.
@@ -17,7 +24,7 @@ namespace _1С_Франчайзи_Вятка
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu());
+            Application.Run(new Autorization());
         }
     }
 }
